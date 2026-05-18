@@ -25,14 +25,29 @@
   - Max 订阅最划算；用 API key 也行（成本约 $0.5-2/天）
 - **git**
 
-## 一键安装
+## 给 AI Agent 一句话装
+
+如果你正在用 Claude Code / Cursor / Codex 之类的 AI Agent，直接把下面这段发给它：
+
+> 帮我装这个开源项目，跑 `node scripts/install.mjs --global` 完成全局安装，装好后告诉我下次自动触发的时间：
+> https://github.com/leiting-eric/DailyBrief
+
+Agent 会自动 `git clone` → `npm install` → 注册系统调度器 → 链接全局 skill → 跑一次 `npm run dry-run` 烟测。完成后任意目录打开 Claude Code 都能用 `/run-daily`、`/check-daily`，描述问题（"日报又挂了"）也能触发 `daily-brief` skill 自动加载。
+
+> ⚠️ Agent 替不了 **claude CLI 的 OAuth 登录**（必须本人在浏览器点同意）。如果还没登录过，先跑一次：
+> ```bash
+> echo "hi" | claude --print --model sonnet
+> ```
+> 会引导你登录，登录一次永久生效。
+
+## 一键安装（自己跑）
 
 ```bash
 # Linux / macOS
-curl -sSL https://raw.githubusercontent.com/<your-fork>/daily-brief/main/bootstrap.mjs | node
+curl -sSL https://raw.githubusercontent.com/leiting-eric/DailyBrief/main/bootstrap.mjs | node
 
 # Windows PowerShell
-irm https://raw.githubusercontent.com/<your-fork>/daily-brief/main/bootstrap.mjs | node -
+irm https://raw.githubusercontent.com/leiting-eric/DailyBrief/main/bootstrap.mjs | node -
 ```
 
 这条命令会：
@@ -56,8 +71,8 @@ node bootstrap.mjs --target /custom/path --at 07:30
 
 ```bash
 # 1. clone + 依赖
-git clone https://github.com/<your-fork>/daily-brief.git
-cd daily-brief
+git clone https://github.com/leiting-eric/DailyBrief.git
+cd DailyBrief
 npm install
 
 # 2. 验证 claude CLI（如果没登录会引导你登录）

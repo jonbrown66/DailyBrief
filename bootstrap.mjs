@@ -2,10 +2,10 @@
 /**
  * One-line installer for the daily-brief digest pipeline. Cross-platform.
  *
- *   curl -sSL https://raw.githubusercontent.com/<user>/daily-brief/main/bootstrap.mjs | node
+ *   curl -sSL https://raw.githubusercontent.com/leiting-eric/DailyBrief/main/bootstrap.mjs | node
  *
  * On Windows PowerShell:
- *   irm https://raw.githubusercontent.com/<user>/daily-brief/main/bootstrap.mjs | node -
+ *   irm https://raw.githubusercontent.com/leiting-eric/DailyBrief/main/bootstrap.mjs | node -
  *
  * Default behavior:
  *   - Clones the repo to ~/daily-brief (or %USERPROFILE%\daily-brief on Windows)
@@ -24,7 +24,7 @@ import os from "node:os";
 import path from "node:path";
 import { execSync, spawnSync } from "node:child_process";
 
-const REPO_DEFAULT = "https://github.com/REPLACE_WITH_YOUR_FORK/daily-brief.git";
+const REPO_DEFAULT = "https://github.com/leiting-eric/DailyBrief.git";
 const TARGET_DEFAULT = path.join(os.homedir(), "daily-brief");
 const AT_DEFAULT = "16:00";
 
